@@ -5,7 +5,7 @@ function App() {
 
   const todos = [
     {rowNumber: 1, rowTask: "Feed Dog", rowAssigned: "User 1"},
-    {rowNumber: 2, rowTask: "Feed Pidgeon", rowAssigned: "User 2"},
+    {rowNumber: 2, rowTask: "Water plants", rowAssigned: "User 2"},
     {rowNumber: 1, rowTask: "Feed Pig", rowAssigned: "User 2"}
   ];
 
