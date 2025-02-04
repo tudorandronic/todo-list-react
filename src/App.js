@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import TodoTable from './components/TodoTable';
+import TodoForm from './components/TodoForm';
 import React,{useState} from 'react';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div>
-      <div class='container'>
+      <div className='container'>
         <img src={logo} className="App-logo" alt="logo" />
       </div>
       <div className="mt-5 container">
@@ -32,7 +33,8 @@ function App() {
                 <TodoTable todoList={todos}/>
                 <button className='btn btn-primary' onClick = {addTodo}>
                   Add new todo
-              </button>
+                </button>
+                <TodoForm todoList={todos} setTodos={setTodos}/>
             </div>
           </div>
       </div>
