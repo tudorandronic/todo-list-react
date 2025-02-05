@@ -3,7 +3,9 @@ import React,{useState} from "react";
 function TodoForm(props){
 
     const addTodo = () => {
-        props.setTodos([...props.todoList, {rowNumber: props.todoList.length+1, rowTask: textarea, rowAssigned:input}]);
+        props.addTodo(textarea, input);
+        setTextarea("");
+        setInput('')
     }
 
     const [textarea, setTextarea] = useState(

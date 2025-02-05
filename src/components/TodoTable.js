@@ -20,7 +20,7 @@ function TodoTable(props){
           <tbody>
             {
               todoList.map(todo => (
-                  <TodoRowItem rowNumber={todo.rowNumber} rowDescription={todo.rowTask} rowAssigned={todo.rowAssigned}/>
+                  <TodoRowItem key={todo.rowNumber} rowNumber={todo.rowNumber} rowDescription={todo.rowTask} rowAssigned={todo.rowAssigned}/>
               ))
             }
           </tbody>

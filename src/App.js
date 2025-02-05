@@ -13,10 +13,13 @@ function App() {
     {rowNumber: 4, rowTask: "Charge phone", rowAssigned: "User 1"}
   ]);
 
-  const addTodo = () => {
-    //if(todos.length > 0){
-      setTodos([...todos,{rowNumber: todos.length+1, rowTask:"Learn React", rowAssigned:"User 3"}]);
-    //}
+  const addTodo = (description, input) => {
+    let rowNumber = 1;
+    if(todos.length > 0){
+      rowNumber = todos[todos.length-1].rowNumber+1;
+    }
+
+    setTodos([...todos,{rowNumber: rowNumber, rowTask:description, rowAssigned:input}]);
   }
 
   return (
@@ -34,7 +37,7 @@ function App() {
                 <button className='btn btn-primary' onClick = {addTodo}>
                   Add new todo
                 </button>
-                <TodoForm todoList={todos} setTodos={setTodos}/>
+                <TodoForm todoList={todos} addTodo={addTodo}/>
             </div>
           </div>
       </div>
