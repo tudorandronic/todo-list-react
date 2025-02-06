@@ -6,6 +6,7 @@ function TodoForm(props){
         props.addTodo(textarea, input);
         setTextarea("");
         setInput('')
+        props.showTodo();
     }
 
     const [textarea, setTextarea] = useState(

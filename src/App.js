@@ -13,6 +13,16 @@ function App() {
     {rowNumber: 4, rowTask: "Charge phone", rowAssigned: "User 1"}
   ]);
 
+  const [showTodoForm, setShowTodoForm] = useState(false);
+
+  const showTodo = () =>{
+    if(!showTodoForm){
+      setShowTodoForm(true);
+    } else {
+      setShowTodoForm(false);
+    }
+  }
+
   const addTodo = (description, input) => {
     let rowNumber = 1;
     if(todos.length > 0){
@@ -20,6 +30,15 @@ function App() {
     }
 
     setTodos([...todos,{rowNumber: rowNumber, rowTask:description, rowAssigned:input}]);
+  }
+
+  const deleteTodo = (deleteTodoRowItem) => {
+    let filtered = todos.filter(
+      function(todo) {
+        return todo.rowNumber !== deleteTodoRowItem
+      }
+    );
+    setTodos(filtered);
   }
 
   return (
@@ -33,11 +52,14 @@ function App() {
               Your Todo's
             </div>
             <div className="card-body">
-                <TodoTable todoList={todos}/>
-                <button className='btn btn-primary' onClick = {addTodo}>
-                  Add new todo
+                <TodoTable todoList={todos} deleteTodo ={deleteTodo}/>
+                <button className='btn btn-primary' onClick = {showTodo}>
+                  {showTodoForm ? "Close New Todo" : "New Todo"}
                 </button>
-                <TodoForm todoList={todos} addTodo={addTodo}/>
+                {
+                  showTodoForm && 
+                  <TodoForm todoList={todos} addTodo={addTodo} showTodo={showTodo}/>
+                }
             </div>
           </div>
       </div>

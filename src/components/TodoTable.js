@@ -2,6 +2,7 @@ import TodoRowItem from "./TodoRowItem";
 
 function TodoTable(props){
     const todoList = props.todoList;
+    const deleteTodo = props.deleteTodo;
     return (
         <table className='table table-hover'>
           <thead>
@@ -20,7 +21,7 @@ function TodoTable(props){
           <tbody>
             {
               todoList.map(todo => (
-                  <TodoRowItem key={todo.rowNumber} rowNumber={todo.rowNumber} rowDescription={todo.rowTask} rowAssigned={todo.rowAssigned}/>
+                  <TodoRowItem key={todo.rowNumber} rowNumber={todo.rowNumber} rowDescription={todo.rowTask} rowAssigned={todo.rowAssigned} deleteTodo={deleteTodo}/>
               ))
             }
           </tbody>
