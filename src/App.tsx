@@ -1,16 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import TodoTable from './components/TodoTable';
-import TodoForm from './components/TodoForm';
+import { TodoTable } from './components/TodoTable';
+import { TodoForm } from './components/TodoForm';
 import React,{useState} from 'react';
 
-function App() {
+export const App = () => {
 
   const [todos, setTodos] = useState([
-    {rowNumber: 1, rowTask: "Feed Dog", rowAssigned: "User 1"},
-    {rowNumber: 2, rowTask: "Water plants", rowAssigned: "User 2"},
-    {rowNumber: 3, rowTask: "Feed Pig", rowAssigned: "User 2"},
-    {rowNumber: 4, rowTask: "Charge phone", rowAssigned: "User 1"}
+    {rowNumber: 1, rowDescription: "Feed Dog", rowAssigned: "User 1"},
+    {rowNumber: 2, rowDescription: "Water plants", rowAssigned: "User 2"},
+    {rowNumber: 3, rowDescription: "Feed Pig", rowAssigned: "User 2"},
+    {rowNumber: 4, rowDescription: "Charge phone", rowAssigned: "User 1"}
   ]);
 
   const [showTodoForm, setShowTodoForm] = useState(false);
@@ -23,16 +22,16 @@ function App() {
     }
   }
 
-  const addTodo = (description, input) => {
+  const addTodo = (description:string, input:string) => {
     let rowNumber = 1;
     if(todos.length > 0){
       rowNumber = todos[todos.length-1].rowNumber+1;
     }
 
-    setTodos([...todos,{rowNumber: rowNumber, rowTask:description, rowAssigned:input}]);
+    setTodos([...todos,{rowNumber: rowNumber, rowDescription:description, rowAssigned:input}]);
   }
 
-  const deleteTodo = (deleteTodoRowItem) => {
+  const deleteTodo = (deleteTodoRowItem:number) => {
     let filtered = todos.filter(
       function(todo) {
         return todo.rowNumber !== deleteTodoRowItem
@@ -43,9 +42,6 @@ function App() {
 
   return (
     <div>
-      <div className='container'>
-        <img src={logo} className="App-logo" alt="logo" />
-      </div>
       <div className="mt-5 container">
           <div className='card'>
             <div className="card-header">
@@ -58,7 +54,7 @@ function App() {
                 </button>
                 {
                   showTodoForm && 
-                  <TodoForm todoList={todos} addTodo={addTodo} showTodo={showTodo}/>
+                  <TodoForm addTodo={addTodo} showTodo={showTodo}/>
                 }
             </div>
           </div>
@@ -68,4 +64,3 @@ function App() {
   );
 }
 
-export default App;

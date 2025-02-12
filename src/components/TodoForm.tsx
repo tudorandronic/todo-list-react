@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-function TodoForm(props){
+export const TodoForm: React.FC<{addTodo: Function, showTodo: Function}> = (props) =>{
 
     const addTodo = () => {
         props.addTodo(textarea, input);
@@ -17,11 +17,11 @@ function TodoForm(props){
         ""
     )
 
-    const handleChangeTextArea = (event) => {
+    const handleChangeTextArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setTextarea(event.target.value);
     }
 
-    const handleChangeInput = (event) => {
+    const handleChangeInput = (event:React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
     }
 
@@ -41,5 +41,3 @@ function TodoForm(props){
         </div>
     )
 }
-
-export default TodoForm;
